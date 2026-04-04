@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Financier – Nicolas Laborde</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f1e;
+    --navy2: #0d1530;
+    --blue: #1a2a6c;
+    --accent: #f0b429;
+    --white: #ffffff;
+    --green: #22c55e;
+    --border: rgba(240,180,41,0.18);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  @media (min-width: 900px) {
+    .wrapper { max-width: 860px; }
+  }
+
+  /* ── TITRES ── */
+  .display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .display .gold { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 60%, #0a1628 100%);
+    padding: 48px 24px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,42,108,0.45) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (min-width: 900px) {
+    .hero-inner { flex-direction: row; align-items: center; gap: 56px; }
+    .hero-content { flex: 1; }
+    .hero-photo { flex: 0 0 380px; }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,180,41,0.12);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(38px, 8vw, 60px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 .gold { color: var(--accent); }
+
+  .hero-divider {
+    width: 40px; height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+  }
+  .hero-stat .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+    min-width: 54px;
+  }
+  .hero-stat .lbl { color: rgba(255,255,255,0.85); }
+
+  .hero-photo img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ── BUTTONS ── */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(90deg, #1a2a6c, #2a3f9f);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 18px 24px;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(26,42,108,0.5);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn.gold {
+    background: linear-gradient(90deg, #b8860b, #f0b429, #b8860b);
+    color: #0a0f1e;
+    box-shadow: 0 8px 32px rgba(240,180,41,0.3);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240,180,41,0.3), transparent);
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .section-title span { color: var(--accent); }
+
+  /* ── PROCESS ── */
+  .process-section {
+    background: var(--navy2);
+    padding: 56px 24px;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .process-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .process-card {
+    background: linear-gradient(135deg, #111827, #0d1530);
+    border: 1px solid rgba(240,180,41,0.15);
+    border-radius: 18px;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .process-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+  }
+  .process-icon { font-size: 30px; margin-bottom: 12px; }
+  .process-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .process-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .process-card ul li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .process-card ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── CLUB PRIVÉ ── */
+  .club-section {
+    background: linear-gradient(135deg, #0d1530, #0a1628);
+    padding: 56px 24px;
+  }
+  .club-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (min-width: 900px) {
+    .club-inner { flex-direction: row; align-items: center; gap: 56px; }
+    .club-content { flex: 1; }
+    .club-img { flex: 0 0 380px; }
+  }
+  .club-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #b8860b, #f0b429);
+    color: #0a0f1e;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+  }
+  .club-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .club-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(240,180,41,0.12);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .club-feature .icon { font-size: 18px; flex-shrink: 0; }
+  .club-punchline {
+    background: linear-gradient(135deg, #1a2a6c, #0d1530);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .club-punchline strong { color: var(--accent); font-style: normal; }
+  .club-img img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ── ANTI-OBJECTION ── */
+  .anti-section {
+    padding: 56px 24px;
+    background: var(--navy);
+  }
+  .anti-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (min-width: 900px) {
+    .anti-inner { flex-direction: row; align-items: center; gap: 56px; }
+    .anti-img { flex: 0 0 380px; order: -1; }
+    .anti-content { flex: 1; }
+  }
+  .anti-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .anti-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .anti-item.no {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+    color: rgba(255,255,255,0.75);
+  }
+  .anti-item.yes {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.2);
+    color: rgba(255,255,255,0.9);
+  }
+  .anti-img img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ── CTA FINAL ── */
+  .cta-section {
+    background: linear-gradient(135deg, #0d1a3a, #1a2a6c);
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 5vw, 50px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .cta-section p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    line-height: 1.7;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="wrapper">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">🌍 La Méthode 100 000€</div>
+        <h1>Passe de l'épargne passive à un <span class="gold">Système</span> avec plusieurs sources de revenus.</h1>
+        <div class="hero-divider"></div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num">+200</span><span class="lbl">personnes accompagnées</span></div>
+          <div class="hero-stat"><span class="num">+60</span><span class="lbl">entrepreneurs dans un club privé</span></div>
+          <div class="hero-stat"><span class="num">🏛️</span><span class="lbl">Un cadre structuré pour développer ton patrimoine</span></div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="URL_PHOTO_NICOLAS_ICI" alt="Nicolas Laborde – Coach Financier">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HERO CTA FULL WIDTH ══ -->
+<section style="background:linear-gradient(135deg,#0a0f1e,#0d1530);padding:0 24px 48px;">
+  <div class="wrapper">
+    <a href="#" class="cta-btn">Je réserve mon audit financier</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROCESS ══ -->
+<section class="process-section">
+  <div class="wrapper">
+    <div class="section-label">Ce que tu vas réellement intégrer</div>
+    <div class="section-title">3 étapes pour <span>transformer</span> ton patrimoine</div>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-icon">🔍</div>
+        <h3>Diagnostic</h3>
+        <ul>
+          <li>Analyse complète de ta situation</li>
+          <li>Cash, épargne, investissements</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">💡</div>
+        <h3>Stratégie</h3>
+        <ul>
+          <li>Plan personnalisé sur 2–10 ans</li>
+          <li>Allocation + optimisation avancée</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">🚀</div>
+        <h3>Action</h3>
+        <ul>
+          <li>Mise en place + suivi</li>
+          <li>Accès au Club Privé + opportunités</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CLUB PRIVÉ ══ -->
+<section class="club-section">
+  <div class="wrapper">
+    <div class="club-inner">
+      <div class="club-content">
+        <div class="club-badge">👑 Club Privé</div>
+        <div class="section-title">Tu n'intègres pas juste une méthode.<br>Tu entres dans un <span>Écosystème.</span></div>
+        <div class="club-features">
+          <div class="club-feature"><span class="icon">👥</span> Club privé de +60 entrepreneurs &amp; investisseurs</div>
+          <div class="club-feature"><span class="icon">💼</span> Échanges business exclusifs</div>
+          <div class="club-feature"><span class="icon">📈</span> Opportunités d'investissement</div>
+          <div class="club-feature"><span class="icon">🏆</span> Retours d'expérience réels</div>
+          <div class="club-feature"><span class="icon">🌐</span> Réseau haut niveau</div>
+        </div>
+        <div class="club-punchline">"Ton environnement <strong>financier</strong> détermine tes résultats."</div>
+        <a href="#" class="cta-btn">Je réserve mon audit financier</a>
+      </div>
+      <div class="club-img">
+        <img src="URL_PHOTO_CLUB_PRIVE_ICI" alt="Club Privé – Session">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ANTI-OBJECTION ══ -->
+<section class="anti-section">
+  <div class="wrapper">
+    <div class="anti-inner">
+      <div class="anti-img">
+        <img src="URL_PHOTO_COACHING_ICI" alt="Audit différent">
+      </div>
+      <div class="anti-content">
+        <div class="section-label">Pourquoi cet audit est différent</div>
+        <div class="section-title">Pas de blabla.<br><span>Que du concret.</span></div>
+        <div class="anti-grid">
+          <div class="anti-item no">❌&nbsp; Pas un webinaire</div>
+          <div class="anti-item no">❌&nbsp; Pas une vente déguisée</div>
+          <div class="anti-item no">❌&nbsp; Pas du théorique</div>
+          <div class="anti-item yes">✅&nbsp; Un échange concret, face-à-face</div>
+          <div class="anti-item yes">✅&nbsp; Une stratégie claire et personnalisée</div>
+          <div class="anti-item yes">✅&nbsp; Des actions applicables dès demain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-section">
+  <div class="wrapper">
+    <h2>Prêt à construire un vrai système financier ?</h2>
+    <p>Un rendez-vous gratuit. Pas une vente déguisée.<br>Une vraie session avec un expert en stratégie patrimoniale.</p>
+    <a href="#" class="cta-btn gold">Je réserve mon audit financier</a>
+  </div>
+</section>
+
+</body>
+</html>
