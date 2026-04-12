@@ -350,7 +350,30 @@
     box-shadow: 0 24px 60px rgba(0,0,0,0.5);
   }
 
-  /* ── CTA FINAL ── */
+  /* ── PERFORMANCES ── */
+  .perf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .perf-grid img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    display: block;
+    object-fit: cover;
+    max-height: 500px;
+  }
+  @media (min-width: 900px) {
+    .perf-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .perf-grid img {
+      max-height: 600px;
+    }
+  }
+
+
   .cta-section {
     background: linear-gradient(135deg, #0d1a3a, #1a2a6c);
     padding: 64px 24px;
@@ -486,16 +509,11 @@
   <div class="wrapper">
     <div class="section-label">Ils sont passés à l'action</div>
     <div class="section-title" style="margin-bottom:32px;">Les <span>résultats</span> parlent d'eux-mêmes</div>
-    <div style="display:grid;grid-template-columns:1fr;gap:20px;">
-      <img src="performance1.jpg" alt="Performance +319,80% en 14 jours" style="width:100%;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.5);display:block;">
-      <img src="performance2.jpg" alt="ARIA +290% - 1000€ de plus value" style="width:100%;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.5);display:block;">
-      <img src="performance3.jpg" alt="Bientôt +100% en 3 ans" style="width:100%;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.5);display:block;">
+    <div class="perf-grid">
+      <img src="performance1.jpg" alt="Performance +319,80% en 14 jours">
+      <img src="performance2.jpg" alt="ARIA +290% - 1000€ de plus value">
+      <img src="performance3.jpg" alt="Bientôt +100% en 3 ans">
     </div>
-    <style>
-      @media (min-width: 900px) {
-        .perf-grid { grid-template-columns: repeat(3, 1fr) !important; }
-      }
-    </style>
   </div>
 </section>
 
