@@ -397,6 +397,10 @@
     margin-right: auto;
   }
 
+  .expertise-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) {
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
@@ -423,7 +427,7 @@
       </div>
       <div class="hero-photo">
         <img src="nicolas.jpg" alt="Nicolas Laborde – Coach Financier">
-        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:14px;line-height:1.6;text-align:center;">Je suis <strong style="color:var(--white);">Nicolas LABORDE</strong>, CIF &amp; Administrateur Crédit Mutuel<br>Créateur de la <strong style="color:var(--accent);">Méthode 100 000€</strong>.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:14px;line-height:1.6;text-align:center;">Je suis <strong style="color:var(--white);">Nicolas LABORDE</strong>, CIF &amp; Administrateur Crédit Mutuel,<br>Pôle Immobilier du Club — créateur de la <strong style="color:var(--accent);">Méthode 100 000€</strong>.</p>
       </div>
     </div>
   </div>
@@ -439,6 +443,30 @@
       <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">⭐ <span>Accès réservé</span></span>
       <span style="color:rgba(240,180,41,0.4);font-size:10px;">✦</span>
       <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">📋 <span>Sélection sur dossier</span></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EXPERTISES ══ -->
+<section style="background:var(--navy);padding:56px 24px;">
+  <div class="wrapper">
+    <div class="section-label">Nos domaines d'expertise</div>
+    <div class="section-title">Ce qui nous rend <span>uniques</span></div>
+    <div class="expertise-grid" style="display:grid;grid-template-columns:1fr;gap:20px;">
+      <div style="background:linear-gradient(135deg,#111827,#0d1530);border:1px solid rgba(240,180,41,0.3);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);"></div>
+        <div style="font-size:36px;margin-bottom:16px;">₿</div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,180,41,0.7);margin-bottom:8px;">Crypto</p>
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.2;margin:0;">Processus redoutable sur Crypto</p>
+      </div>
+      <div style="background:linear-gradient(135deg,#111827,#0d1530);border:1px solid rgba(240,180,41,0.3);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);"></div>
+        <div style="font-size:36px;margin-bottom:16px;">🛡️</div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,180,41,0.7);margin-bottom:8px;">Assurance Vie</p>
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.2;margin:0;">La plus performante de France</p>
+      </div>
     </div>
   </div>
 </section>
