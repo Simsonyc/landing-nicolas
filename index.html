@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audit Financier – Nicolas Laborde</title>
+<title>Audit Financier – Florent BOUE</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -16,546 +16,191 @@
     --border: rgba(240,180,41,0.18);
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); font-size: 16px; line-height: 1.5; }
+  .wrapper { max-width: 520px; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 900px) { .wrapper { max-width: 900px; } }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(28px,5vw,44px); line-height: 1.05; text-transform: uppercase; margin-bottom: 32px; }
+  .section-title span { color: var(--accent); }
+  .cta-btn { display: block; width: 100%; background: linear-gradient(90deg,#1a2a6c,#2a3f9f); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: center; padding: 18px 24px; border-radius: 14px; cursor: pointer; text-decoration: none; box-shadow: 0 8px 32px rgba(26,42,108,0.5); transition: transform 0.15s; }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn.gold { background: linear-gradient(90deg,#b8860b,#f0b429,#b8860b); color: #0a0f1e; box-shadow: 0 8px 32px rgba(240,180,41,0.3); }
+  .divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(240,180,41,0.3),transparent); }
+  .scarcity { display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .scarcity span { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 5px; }
+  .scarcity .dot { color: rgba(240,180,41,0.4); font-size: 8px; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .wrapper {
-    max-width: 520px;
-    margin: 0 auto;
-  }
-  @media (min-width: 900px) {
-    .wrapper { max-width: 860px; }
-  }
-
-  /* ── TITRES ── */
-  .display {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .display .gold { color: var(--accent); }
-
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 60%, #0a1628 100%);
-    padding: 48px 24px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(26,42,108,0.45) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
+  /* HERO */
+  .hero-inner { display: flex; flex-direction: column; gap: 32px; position: relative; z-index: 1; }
   @media (min-width: 900px) {
     .hero-inner { flex-direction: row; align-items: center; gap: 56px; }
     .hero-content { flex: 1; }
-    .hero-photo { flex: 0 0 380px; }
+    .hero-photo { flex: 0 0 360px; }
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(240,180,41,0.12);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 8vw, 60px);
-    line-height: 1.05;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-  }
-  .hero h1 .gold { color: var(--accent); }
-
-  .hero-divider {
-    width: 40px; height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
-  .hero-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .hero-stat {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-  }
-  .hero-stat .num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--accent);
-    min-width: 54px;
-  }
-  .hero-stat .lbl { color: rgba(255,255,255,0.85); }
-
-  .hero-photo img {
-    width: 100%;
-    border-radius: 20px;
-    display: block;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-  }
-
-  /* ── BUTTONS ── */
-  .cta-btn {
-    display: block;
-    width: 100%;
-    background: linear-gradient(90deg, #1a2a6c, #2a3f9f);
-    color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    padding: 18px 24px;
-    border-radius: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 8px 32px rgba(26,42,108,0.5);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .cta-btn:hover { transform: translateY(-2px); }
-  .cta-btn.gold {
-    background: linear-gradient(90deg, #b8860b, #f0b429, #b8860b);
-    color: #0a0f1e;
-    box-shadow: 0 8px 32px rgba(240,180,41,0.3);
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(240,180,41,0.3), transparent);
-  }
-
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(30px, 5vw, 46px);
-    line-height: 1.05;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-  }
-  .section-title span { color: var(--accent); }
-
-  /* ── PROCESS ── */
-  .process-section {
-    background: var(--navy2);
-    padding: 56px 24px;
-  }
-  .process-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  @media (min-width: 900px) {
-    .process-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .process-card {
-    background: linear-gradient(135deg, #111827, #0d1530);
-    border: 1px solid rgba(240,180,41,0.15);
-    border-radius: 18px;
-    padding: 28px 22px;
-    position: relative;
-    overflow: hidden;
-  }
-  .process-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--accent);
-  }
-  .process-icon { font-size: 30px; margin-bottom: 12px; }
-  .process-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-  }
-  .process-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .process-card ul li {
-    font-size: 14px;
-    color: rgba(255,255,255,0.8);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .process-card ul li::before {
-    content: '✓';
-    color: var(--green);
-    font-weight: 700;
-    font-size: 12px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  /* ── CLUB PRIVÉ ── */
-  .club-section {
-    background: linear-gradient(135deg, #0d1530, #0a1628);
-    padding: 56px 24px;
-  }
-  .club-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-  @media (min-width: 900px) {
-    .club-inner { flex-direction: row; align-items: center; gap: 56px; }
-    .club-content { flex: 1; }
-    .club-img { flex: 0 0 380px; }
-  }
-  .club-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, #b8860b, #f0b429);
-    color: #0a0f1e;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 18px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-  }
-  .club-features {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .club-feature {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(240,180,41,0.12);
-    border-radius: 12px;
-    padding: 14px 16px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.9);
-    font-weight: 500;
-  }
-  .club-feature .icon { font-size: 18px; flex-shrink: 0; }
-  .club-punchline {
-    background: linear-gradient(135deg, #1a2a6c, #0d1530);
-    border-left: 4px solid var(--accent);
-    border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    font-size: 15px;
-    font-style: italic;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
-    margin-bottom: 24px;
-  }
-  .club-punchline strong { color: var(--accent); font-style: normal; }
-  .club-img img {
-    width: 100%;
-    border-radius: 20px;
-    display: block;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-  }
-
-  /* ── ANTI-OBJECTION ── */
-  .anti-section {
-    padding: 56px 24px;
-    background: var(--navy);
-  }
-  .anti-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-  @media (min-width: 900px) {
-    .anti-inner { flex-direction: row; align-items: center; gap: 56px; }
-    .anti-img { flex: 0 0 380px; order: -1; }
-    .anti-content { flex: 1; }
-  }
-  .anti-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .anti-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .anti-item.no {
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.2);
-    color: rgba(255,255,255,0.75);
-  }
-  .anti-item.yes {
-    background: rgba(34,197,94,0.08);
-    border: 1px solid rgba(34,197,94,0.2);
-    color: rgba(255,255,255,0.9);
-  }
-  .anti-img img {
-    width: 100%;
-    border-radius: 20px;
-    display: block;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-  }
-
-  /* ── PERFORMANCES ── */
-  .perf-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .perf-grid img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-    display: block;
-    object-fit: cover;
-    max-height: 500px;
-  }
-  @media (min-width: 900px) {
-    .perf-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .perf-grid img {
-      max-height: 600px;
-    }
-  }
-
-
-  .cta-section {
-    background: linear-gradient(135deg, #0d1a3a, #1a2a6c);
-    padding: 64px 24px;
-    text-align: center;
-  }
-  .cta-section h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(30px, 5vw, 50px);
-    text-transform: uppercase;
-    line-height: 1.05;
-    margin-bottom: 12px;
-  }
-  .cta-section p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 32px;
-    line-height: 1.7;
-    max-width: 460px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .expertise-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  /* GRIDS */
+  .expertise-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .process-grid   { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .perf-grid      { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 900px) {
     .expertise-grid { grid-template-columns: repeat(3, 1fr); }
+    .process-grid   { grid-template-columns: repeat(3, 1fr); }
+    .perf-grid      { grid-template-columns: repeat(3, 1fr); }
   }
+  .perf-grid img { width: 100%; border-radius: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.5); display: block; object-fit: cover; max-height: 500px; }
+  @media (min-width: 900px) { .perf-grid img { max-height: 600px; } }
+
+  /* CARDS */
+  .card-base { background: linear-gradient(135deg,#111827,#0d1530); border: 1px solid rgba(240,180,41,0.25); border-radius: 18px; padding: 28px 22px; position: relative; overflow: hidden; }
+  .card-base::before { content:''; position: absolute; top:0; left:0; width:4px; height:100%; background: var(--accent); }
+  .card-icon { font-size: 32px; margin-bottom: 14px; }
+  .card-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,180,41,0.7); margin-bottom: 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1.2; }
+  .card-title.gold { color: var(--accent); }
+
+  /* CLUB */
+  .club-inner { display: flex; flex-direction: column; gap: 32px; }
+  @media (min-width: 900px) { .club-inner { flex-direction: row; align-items: center; gap: 56px; } .club-content { flex: 1; } .club-img { flex: 0 0 380px; } }
+  .club-feature { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(240,180,41,0.12); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500; margin-bottom: 10px; }
+
+  /* ANTI */
+  .anti-inner { display: flex; flex-direction: column; gap: 32px; }
+  @media (min-width: 900px) { .anti-inner { flex-direction: row; align-items: center; gap: 56px; } .anti-img { flex: 0 0 380px; order: -1; } .anti-content { flex: 1; } }
+  .anti-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+  .anti-item.no  { background: rgba(239,68,68,0.08);  border: 1px solid rgba(239,68,68,0.2);  color: rgba(255,255,255,0.75); }
+  .anti-item.yes { background: rgba(34,197,94,0.08);  border: 1px solid rgba(34,197,94,0.2);  color: rgba(255,255,255,0.9); }
 </style>
 </head>
 <body>
 
-<!-- ══ BANDEAU TOP ══ -->
+<!-- BANDEAU TOP -->
 <div style="background:linear-gradient(90deg,#b8860b,#f0b429,#b8860b);padding:12px 24px;text-align:center;">
-  <p style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(14px,3vw,18px);text-transform:uppercase;letter-spacing:2px;color:#0a0f1e;margin:0;">
-    ✦ &nbsp;Club d'Investisseur &nbsp;·&nbsp; Pôle Immobilier&nbsp; ✦
-  </p>
+  <p style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(14px,3vw,18px);text-transform:uppercase;letter-spacing:2px;color:#0a0f1e;margin:0;">✦ &nbsp;Club d'Investisseur &nbsp;·&nbsp; Pôle Immobilier&nbsp; ✦</p>
 </div>
 
-<!-- ══ HERO ══ -->
-<section class="hero">
+<!-- HERO -->
+<section style="background:linear-gradient(135deg,#0a0f1e 0%,#0d1a3a 60%,#0a1628 100%);padding:56px 0 40px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(26,42,108,0.45) 0%,transparent 70%);pointer-events:none;"></div>
   <div class="wrapper">
     <div class="hero-inner">
       <div class="hero-content">
-        <h1>Passe de l'épargne passive à un <span class="gold">Système</span> avec plusieurs sources de revenus.</h1>
-        <div class="hero-divider"></div>
-        <div class="hero-stats">
-          <div class="hero-stat"><span class="num">+200</span><span class="lbl">personnes accompagnées</span></div>
-          <div class="hero-stat"><span class="num">+60</span><span class="lbl">entrepreneurs dans un club privé</span></div>
-          <div class="hero-stat"><span class="num">🏛️</span><span class="lbl">Un cadre structuré pour développer ton patrimoine</span></div>
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(14px,2.5vw,18px);font-weight:700;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;line-height:1.4;">Inflation · Frais cachés · Méthodes douteuses · IA qui bouleverse les marchés…</p>
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(36px,8vw,58px);line-height:1.05;text-transform:uppercase;margin-bottom:16px;">Ton argent est en danger<br><span style="color:var(--accent);">si tu ne fais rien.</span></h1>
+        <p style="font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:24px;line-height:1.7;">Il est temps de construire un <strong style="color:var(--white);">écosystème résilient</strong> avec plusieurs sources de revenus — comme nous le faisons nous-mêmes chaque jour.</p>
+        <div style="width:40px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:24px;"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--accent);min-width:54px;">+200</span><span style="color:rgba(255,255,255,0.85);font-size:15px;">personnes accompagnées</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--accent);min-width:54px;">+60</span><span style="color:rgba(255,255,255,0.85);font-size:15px;">entrepreneurs dans un club privé</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span style="font-size:22px;min-width:54px;">🏛️</span><span style="color:rgba(255,255,255,0.85);font-size:15px;">Un cadre structuré pour développer ton patrimoine</span></div>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="nicolas.jpg" alt="Florent BOUE – Coach Financier">
-        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:14px;line-height:1.6;text-align:center;">Je suis <strong style="color:var(--white);">Florent BOUE</strong>, CIF &amp; Administrateur Crédit Mutuel,<br>Pôle Immobilier du Club — créateur de la <strong style="color:var(--accent);">Méthode 100 000€</strong>.</p>
+        <img src="nicolas.jpg" alt="Florent BOUE – Coach Financier" style="width:100%;border-radius:20px;display:block;box-shadow:0 24px 60px rgba(0,0,0,0.5);">
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-top:14px;line-height:1.6;text-align:center;">Je suis <strong style="color:var(--white);">Florent BOUE</strong>, CIF &amp; Administrateur Crédit Mutuel,<br>Pôle Immobilier du Club — créateur de la <strong style="color:var(--accent);">Méthode 100 000€</strong>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ HERO CTA FULL WIDTH ══ -->
+<!-- HERO CTA -->
 <section style="background:linear-gradient(135deg,#0a0f1e,#0d1530);padding:0 24px 48px;">
-  <div class="wrapper">
+  <div class="wrapper" style="padding:0;">
     <a href="https://api.leadconnectorhq.com/widget/booking/RZ2gGc9nYl2KSlMh8Upt?backgroundColor=%23F5F5F5FF&primaryColor=%230355A3FF&buttonText=Acc%C3%A9der+%C3%A0+mon+Rendez-vous+Expert+Offert&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false" target="_blank" class="cta-btn">Je réserve mon audit financier</a>
-    <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-top:16px;">
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">🔒 <span>Places limitées</span></span>
-      <span style="color:rgba(240,180,41,0.4);font-size:10px;">✦</span>
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">⭐ <span>Accès réservé</span></span>
-      <span style="color:rgba(240,180,41,0.4);font-size:10px;">✦</span>
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">📋 <span>Sélection sur dossier</span></span>
-    </div>
+    <div class="scarcity"><span>🔒 Places limitées</span><span class="dot">✦</span><span>⭐ Accès réservé</span><span class="dot">✦</span><span>📋 Sélection sur dossier</span></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ EXPERTISES ══ -->
-<section style="background:var(--navy);padding:56px 24px;">
+<!-- DOULEUR -->
+<section style="background:var(--navy2);padding:56px 0;">
   <div class="wrapper">
-    <div class="section-label">Nos domaines d'expertise</div>
-    <div class="section-title">Ce qui nous rend <span>uniques</span></div>
-    <div class="expertise-grid" style="display:grid;grid-template-columns:1fr;gap:20px;">
-      <div style="background:linear-gradient(135deg,#111827,#0d1530);border:1px solid rgba(240,180,41,0.3);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);"></div>
-        <div style="font-size:36px;margin-bottom:16px;">₿</div>
-        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,180,41,0.7);margin-bottom:8px;">Crypto</p>
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.2;margin:0;">Processus redoutable sur Crypto</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#111827,#0d1530);border:1px solid rgba(240,180,41,0.3);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);"></div>
-        <div style="font-size:36px;margin-bottom:16px;">🛡️</div>
-        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,180,41,0.7);margin-bottom:8px;">Assurance Vie</p>
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.2;margin:0;">La plus performante de France</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#111827,#0d1530);border:1px solid rgba(240,180,41,0.3);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);"></div>
-        <div style="font-size:36px;margin-bottom:16px;">🏢</div>
-        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,180,41,0.7);margin-bottom:8px;">Pôle Immobilier</p>
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.2;margin-bottom:14px;">On investit ensemble sur des biens locatifs</p>
-        <div style="background:rgba(240,180,41,0.12);border:1px solid rgba(240,180,41,0.3);border-radius:10px;padding:10px 14px;display:inline-block;">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--accent);">+12%</span>
-          <span style="font-size:12px;color:rgba(255,255,255,0.7);display:block;margin-top:2px;">de rentabilité</span>
-        </div>
-      </div>
+    <div class="section-label">Le constat</div>
+    <div class="section-title">Pendant ce temps,<br><span>ton argent perd de la valeur</span></div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:40px;">
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);font-size:15px;color:rgba(255,255,255,0.85);">❌&nbsp; Les méthodes "get rich quick" qui disparaissent avec ton argent</div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);font-size:15px;color:rgba(255,255,255,0.85);">❌&nbsp; Les frais de gestion qui explosent et mangent ta performance</div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);font-size:15px;color:rgba(255,255,255,0.85);">❌&nbsp; L'inflation qui érode ton épargne chaque mois silencieusement</div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);font-size:15px;color:rgba(255,255,255,0.85);">❌&nbsp; L'IA qui bouleverse les marchés traditionnels</div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);font-size:15px;color:rgba(255,255,255,0.85);">❌&nbsp; Les cabinets qui te vendent ce qui leur rapporte le plus</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1a2a6c,#0d1530);border-left:4px solid var(--accent);border-radius:0 16px 16px 0;padding:28px 24px;">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,4vw,30px);font-weight:800;text-transform:uppercase;line-height:1.2;margin-bottom:12px;">Nous ne sommes pas un cabinet de gestion.<br><span style="color:var(--accent);">Nous sommes des investisseurs.</span></p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;">Ce que nous te proposons, nous l'utilisons nous-mêmes chaque jour. Nous réduisons tes frais, maximisons ta performance, et nous investissons à tes côtés — sur des canaux que les autres ne combinent pas.</p>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ PROCESS ══ -->
-<section class="process-section">
+<!-- EXPERTISES -->
+<section style="background:var(--navy);padding:56px 0;">
+  <div class="wrapper">
+    <div class="section-label">Nos 5 piliers</div>
+    <div class="section-title">Un écosystème,<br><span>plusieurs sources de revenus</span></div>
+    <div class="expertise-grid">
+      <div class="card-base"><div class="card-icon">₿</div><div class="card-label">Crypto</div><div class="card-title">Processus redoutable sur Crypto</div></div>
+      <div class="card-base"><div class="card-icon">🛡️</div><div class="card-label">Assurance Vie</div><div class="card-title">La plus performante de France</div></div>
+      <div class="card-base">
+        <div class="card-icon">🏢</div><div class="card-label">Pôle Immobilier</div>
+        <div class="card-title">On investit ensemble sur des projets immobiliers rentables qui dégagent du cashflow chaque mois</div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5;">Investissements comportant un risque de perte en capital. Solutions étudiées selon le profil et les objectifs de chaque investisseur.</p>
+      </div>
+      <div class="card-base"><div class="card-icon">👑</div><div class="card-label">Club Privé</div><div class="card-title">+60 entrepreneurs & investisseurs qui avancent ensemble</div></div>
+      <div class="card-base"><div class="card-icon">🎉</div><div class="card-label">Événements physiques</div><div class="card-title">Les Apéros de l'Investissement à Bordeaux</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section style="background:var(--navy2);padding:56px 0;">
   <div class="wrapper">
     <div class="section-label">Ce que tu vas réellement intégrer</div>
     <div class="section-title">3 étapes pour <span>transformer</span> ton patrimoine</div>
     <div class="process-grid">
-      <div class="process-card">
-        <div class="process-icon">🔍</div>
-        <h3>Diagnostic</h3>
-        <ul>
-          <li>Analyse complète de ta situation</li>
-          <li>Cash, épargne, investissements</li>
-        </ul>
-      </div>
-      <div class="process-card">
-        <div class="process-icon">💡</div>
-        <h3>Stratégie</h3>
-        <ul>
-          <li>Plan personnalisé sur 2–10 ans</li>
-          <li>Allocation + optimisation avancée</li>
-        </ul>
-      </div>
-      <div class="process-card">
-        <div class="process-icon">🚀</div>
-        <h3>Action</h3>
-        <ul>
-          <li>Mise en place + suivi</li>
-          <li>Accès au Club Privé + opportunités</li>
-        </ul>
-      </div>
+      <div class="card-base"><div class="card-icon">🔍</div><div class="card-title gold">Diagnostic</div><br><ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;"><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Analyse complète de ta situation</li><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Cash, épargne, investissements</li></ul></div>
+      <div class="card-base"><div class="card-icon">💡</div><div class="card-title gold">Stratégie</div><br><ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;"><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Plan personnalisé sur 2–10 ans</li><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Allocation + optimisation avancée</li></ul></div>
+      <div class="card-base"><div class="card-icon">🚀</div><div class="card-title gold">Action</div><br><ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;"><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Mise en place + suivi</li><li style="font-size:14px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:8px;"><span style="color:#22c55e;font-weight:700;font-size:12px;margin-top:2px;">✓</span>Accès au Club Privé + opportunités</li></ul></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ CLUB PRIVÉ ══ -->
-<section class="club-section">
+<!-- CLUB PRIVÉ -->
+<section style="background:linear-gradient(135deg,#0d1530,#0a1628);padding:56px 0;">
   <div class="wrapper">
     <div class="club-inner">
       <div class="club-content">
-        <div class="club-badge">👑 Club Privé</div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#b8860b,#f0b429);color:#0a0f1e;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:1px;padding:8px 18px;border-radius:30px;margin-bottom:20px;">👑 Club Privé</div>
         <div class="section-title">Tu n'intègres pas juste une méthode.<br>Tu entres dans un <span>Écosystème.</span></div>
-        <div class="club-features">
-          <div class="club-feature"><span class="icon">👥</span> Club privé de +60 entrepreneurs &amp; investisseurs</div>
-          <div class="club-feature"><span class="icon">💼</span> Échanges business exclusifs</div>
-          <div class="club-feature"><span class="icon">📈</span> Opportunités d'investissement</div>
-          <div class="club-feature"><span class="icon">🏆</span> Retours d'expérience réels</div>
-          <div class="club-feature"><span class="icon">🌐</span> Réseau haut niveau</div>
-        </div>
-        <div class="club-punchline">"Ton environnement <strong>financier</strong> détermine tes résultats."</div>
+        <div class="club-feature"><span>👥</span> Club privé de +60 entrepreneurs &amp; investisseurs</div>
+        <div class="club-feature"><span>💼</span> Échanges business exclusifs</div>
+        <div class="club-feature"><span>📈</span> Opportunités d'investissement</div>
+        <div class="club-feature"><span>🏆</span> Retours d'expérience réels</div>
+        <div class="club-feature"><span>🌐</span> Réseau haut niveau</div>
+        <div style="background:linear-gradient(135deg,#1a2a6c,#0d1530);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;font-size:15px;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.5;margin:16px 0 24px;">"Ton environnement <strong style="color:var(--accent);font-style:normal;">financier</strong> détermine tes résultats."</div>
+        <a href="https://api.leadconnectorhq.com/widget/booking/RZ2gGc9nYl2KSlMh8Upt?backgroundColor=%23F5F5F5FF&primaryColor=%230355A3FF&buttonText=Acc%C3%A9der+%C3%A0+mon+Rendez-vous+Expert+Offert&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false" target="_blank" class="cta-btn">Je réserve mon audit financier</a>
       </div>
       <div class="club-img">
-        <img src="club-prive.jpg" alt="Club Privé – Session">
+        <img src="club-prive.jpg" alt="Club Privé" style="width:100%;border-radius:20px;display:block;box-shadow:0 24px 60px rgba(0,0,0,0.5);">
       </div>
-    </div>
-    <div style="margin-top:32px;">
-      <a href="https://api.leadconnectorhq.com/widget/booking/RZ2gGc9nYl2KSlMh8Upt?backgroundColor=%23F5F5F5FF&primaryColor=%230355A3FF&buttonText=Acc%C3%A9der+%C3%A0+mon+Rendez-vous+Expert+Offert&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false" target="_blank" class="cta-btn">Je réserve mon audit financier</a>
     </div>
   </div>
 </section>
 
-
 <div class="divider"></div>
 
-<!-- ══ PERFORMANCES ══ -->
-<section style="background:var(--navy2);padding:56px 24px;">
+<!-- PERFORMANCES -->
+<section style="background:var(--navy2);padding:56px 0;">
   <div class="wrapper">
     <div class="section-label">Ils sont passés à l'action</div>
-    <div class="section-title" style="margin-bottom:32px;">Les <span>résultats</span> parlent d'eux-mêmes</div>
+    <div class="section-title">Les <span>résultats</span> parlent d'eux-mêmes</div>
     <div class="perf-grid">
       <img src="performance1.jpg" alt="Performance +319,80% en 14 jours">
-      <img src="performance2.jpg" alt="ARIA +290% - 1000€ de plus value">
+      <img src="performance2.jpg" alt="ARIA +290%">
       <img src="performance3.jpg" alt="Bientôt +100% en 3 ans">
     </div>
   </div>
@@ -563,24 +208,22 @@
 
 <div class="divider"></div>
 
-<!-- ══ ANTI-OBJECTION ══ -->
-<section class="anti-section">
+<!-- ANTI-OBJECTION -->
+<section style="background:var(--navy);padding:56px 0;">
   <div class="wrapper">
     <div class="anti-inner">
       <div class="anti-img">
-        <img src="coaching.jpg" alt="Audit différent">
+        <img src="coaching.jpg" alt="Audit différent" style="width:100%;border-radius:20px;display:block;box-shadow:0 24px 60px rgba(0,0,0,0.5);">
       </div>
       <div class="anti-content">
         <div class="section-label">Pourquoi cet audit est différent</div>
         <div class="section-title">Pas de blabla.<br><span>Que du concret.</span></div>
-        <div class="anti-grid">
-          <div class="anti-item no">❌&nbsp; Pas un webinaire</div>
-          <div class="anti-item no">❌&nbsp; Pas une vente déguisée</div>
-          <div class="anti-item no">❌&nbsp; Pas du théorique</div>
-          <div class="anti-item yes">✅&nbsp; Un échange concret, face-à-face</div>
-          <div class="anti-item yes">✅&nbsp; Une stratégie claire et personnalisée</div>
-          <div class="anti-item yes">✅&nbsp; Des actions applicables dès demain</div>
-        </div>
+        <div class="anti-item no">❌&nbsp; Pas un webinaire</div>
+        <div class="anti-item no">❌&nbsp; Pas une vente déguisée</div>
+        <div class="anti-item no">❌&nbsp; Pas du théorique</div>
+        <div class="anti-item yes">✅&nbsp; Un échange concret, face-à-face</div>
+        <div class="anti-item yes">✅&nbsp; Une stratégie claire et personnalisée</div>
+        <div class="anti-item yes">✅&nbsp; Des actions applicables dès demain</div>
       </div>
     </div>
   </div>
@@ -588,20 +231,15 @@
 
 <div class="divider"></div>
 
-<!-- ══ CTA FINAL ══ -->
-<section class="cta-section">
+<!-- CTA FINAL -->
+<section style="background:linear-gradient(135deg,#0d1a3a,#1a2a6c);padding:64px 0;text-align:center;">
   <div class="wrapper">
-    <h2>Prêt à construire un vrai système financier ?</h2>
-    <p style="font-size:clamp(18px,3vw,26px);font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:8px;letter-spacing:0.5px;">Tu es Entrepreneur — si ton argent dort, tu perds déjà.</p>
-    <p>Un rendez-vous gratuit. Pas une vente déguisée.<br>Une vraie session avec un expert en stratégie patrimoniale.</p>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,5vw,48px);text-transform:uppercase;line-height:1.05;margin-bottom:10px;">Construis une stratégie durable.</h2>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,3vw,30px);font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:16px;letter-spacing:0.5px;">Tu es Entrepreneur — si ton argent dort, tu perds déjà.</p>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto;">Un rendez-vous gratuit. Pas une vente déguisée.<br>Une vraie session avec un expert en stratégie patrimoniale.</p>
     <a href="https://api.leadconnectorhq.com/widget/booking/RZ2gGc9nYl2KSlMh8Upt?backgroundColor=%23F5F5F5FF&primaryColor=%230355A3FF&buttonText=Acc%C3%A9der+%C3%A0+mon+Rendez-vous+Expert+Offert&showCalendarTitle=true&showCalendarDescription=true&showCalendarDetails=true&default=false" target="_blank" class="cta-btn gold">Je réserve mon audit financier</a>
-    <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-top:16px;">
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">🔒 <span>Places limitées</span></span>
-      <span style="color:rgba(240,180,41,0.4);font-size:10px;">✦</span>
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">⭐ <span>Accès réservé</span></span>
-      <span style="color:rgba(240,180,41,0.4);font-size:10px;">✦</span>
-      <span style="font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;">📋 <span>Sélection sur dossier</span></span>
-    </div>
+    <div class="scarcity" style="margin-top:16px;"><span>🔒 Places limitées</span><span class="dot">✦</span><span>⭐ Accès réservé</span><span class="dot">✦</span><span>📋 Sélection sur dossier</span></div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:28px;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto;">Investissements comportant un risque de perte en capital. Solutions étudiées selon le profil et les objectifs de chaque investisseur.</p>
   </div>
 </section>
 
